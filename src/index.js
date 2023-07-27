@@ -7,7 +7,6 @@ new Command()
   .argument('<project-name>')
   .description('create react app project')
   .action((projectName) => {
-    // eslint-disable-next-line global-require,import/no-dynamic-require
     require(path.resolve(__dirname, 'tasks/create'))(projectName);
   })
   .on('--help', () => {

@@ -7,8 +7,8 @@ const downloadGitRepo = require('download-git-repo');
 const ncp = require('ncp');
 const Metalsmith = require('metalsmith');
 const { render } = require('consolidate').ejs;
-const { downloadDir } = require('../constants');
-const { fetchResp, exist, copyRepo } = require('../../utils');
+const { downloadDir, repositoryAuthor } = require('../constants');
+const { fetchResp, exist, copyRepo } = require('../utils');
 
 /**
  * 1. 拉取自己github上的仓库, 让用户选择相应的项目
@@ -20,13 +20,13 @@ const { fetchResp, exist, copyRepo } = require('../../utils');
 
 // 获取模版仓库
 const fetchRepos = async () => {
-  const { data } = await axios.get('https://api.github.com/users/qq2575896094/repos');
+  const { data } = await axios.get(`https://api.github.com/users/${repositoryAuthor}/repos`);
   return data.filter((repo) => repo.name.endsWith('template')).map((item) => item.name);
 };
 
 // 获取模版的版本
 const fetchTempTags = async (repo) => {
-  const { data } = await axios.get(`https://api.github.com/repos/qq2575896094/${repo}/tags`);
+  const { data } = await axios.get(`https://api.github.com/repos/${repositoryAuthor}/${repo}/tags`);
   return data.map((item) => item.name);
 };
 
@@ -74,7 +74,7 @@ const downloadRepo = async (repo, tag = '') => {
   if (!isRewrite) return repoPath;
 
   const spinner = ora(`download ${repo} ${tag} template`).start();
-  const url = tag ? `qq2575896094/${repo}#${tag}` : `qq2575896094/${repo}`;
+  const url = tag ? `${repositoryAuthor}/${repo}#${tag}` : `${repositoryAuthor}/${repo}`;
 
   await promisify(downloadGitRepo)(url, repoPath);
 
