@@ -5,6 +5,7 @@ const axios = require('axios');
 const downloadGitRepo = require('download-git-repo');
 const ncp = require('ncp');
 const path = require('path');
+const { access } = require('fs/promises');
 const { downloadDir } = require('../constants');
 
 /**
@@ -53,7 +54,7 @@ const choseTempRepo = async () => {
 const choseTagRepo = async (repoName) => {
   // 选择模版仓库的tag版本
   const tags = await fetchResp(fetchTempTags, `fetching ${repoName} template tag list...`)(repoName);
-  console.log(tags);
+
   const { tag } = await inquirer.prompt({
     name: 'tag',
     type: 'list',
@@ -65,14 +66,29 @@ const choseTagRepo = async (repoName) => {
 
 // 下载仓库
 const downloadRepo = async (repo, tag = '') => {
-  // TODO: 判断存储目录中是否存在该仓库, 存在即返回路径, 否则拉取仓库返回路径
+  const repoPath = `${downloadDir}/${repo}`;
+  let isRewrite = true;
+
+  try {
+    await access(repoPath);
+    const { isExist } = await inquirer.prompt({
+      name: 'isExist',
+      type: 'confirm',
+      default: true,
+      message: `This ${repo} repository is existed on location, overlay this?`,
+    });
+
+    isRewrite = isExist;
+  } catch (e) { /* empty */ }
+
+  if (!isRewrite) return repoPath;
+
   const spinner = ora(`download ${repo} ${tag} template`).start();
   const url = tag ? `qq2575896094/${repo}#${tag}` : `qq2575896094/${repo}`;
-  const repoPath = `${downloadDir}/${repo}`;
+
   await promisify(downloadGitRepo)(url, repoPath);
 
   spinner.succeed();
-
   return repoPath;
 };
 
