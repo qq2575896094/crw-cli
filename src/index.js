@@ -2,9 +2,10 @@ const { Command } = require('commander');
 const path = require('path');
 const { version } = require('./constants');
 
-new Command()
+new Command('create-react-website')
+  .alias('crw')
   .version(version)
-  .argument('<project-name>')
+  .argument('<project-name>]')
   .description('create react app project')
   .action((projectName) => {
     require(path.resolve(__dirname, 'tasks/create'))(projectName);
