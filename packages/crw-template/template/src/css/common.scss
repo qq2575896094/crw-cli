@@ -1,0 +1,56 @@
+:global {
+  :root {
+    /* 颜色 */
+    --white: #e9e9e9;
+    --gray: #333;
+    --blue: #095c91;
+    --blue-r: #315a7491;
+    --lightblue: #0393a3;
+
+    /* 圆角 */
+    --button-radius: 0.7rem;
+
+    /* 大小 */
+    --max-width: 758px;
+    --max-height: 420px;
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 16px;
+  }
+
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    color: #4a62e7;
+    background: #e8e8e8;
+  }
+
+  body {
+    display: grid;
+    place-items: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--white);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  }
+
+  #root, .ant-layout {
+    width: 100%;
+    height: 100%;
+  }
+
+  .none {
+    display: none;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+}
+

@@ -1,7 +1,7 @@
 {
   "name": "crw-cli",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "workspaces": [
     "packages/*"
   ],
@@ -35,9 +35,11 @@
     "lerna": "^5.1.6"
   },
   "dependencies": {
+    "axios": "^1.5.1",
     "chalk": "^4.1.2",
     "commander": "^10.0.1",
     "figlet": "^1.7.0",
+    "fs-extra": "^11.1.1",
     "inquirer": "^8.2.5",
     "ora": "^5.4.1"
   }

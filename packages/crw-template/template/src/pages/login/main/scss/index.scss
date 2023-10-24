@@ -1,0 +1,207 @@
+.login-page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  :global {
+    #particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: var(--max-width);
+      height: var(--max-height);
+      overflow: hidden;
+      background-color: var(--white);
+      border-radius: var(--button-radius);
+      box-shadow: 0 0.9rem 1.7rem #bfbfbf,
+      0 0.7rem 0.7rem #c6c6c6;
+
+      .container-form {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        transition: all 0.6s ease-in-out;
+
+        .system-header {
+          margin: 0 0 1.25rem;
+          font-weight: 400;
+          text-align: center;
+        }
+
+        .ant-form {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 100%;
+          padding: 0 3rem !important;
+
+          .user-type-form-item {
+            margin-bottom: 12px;
+          }
+
+          .ant-form-item-control-input {
+            min-height: 36px;
+
+            .ant-input-affix-wrapper {
+              font-size: 16px;
+            }
+          }
+
+          .form-button {
+            width: 100%;
+            height: 36px;
+          }
+        }
+
+        &.container-signup {
+          left: 0;
+          z-index: 5;
+          width: 50%;
+        }
+
+        &.container-signin {
+          left: 0;
+          z-index: 4;
+          width: 50%;
+          opacity: 0;
+        }
+      }
+
+      .container-overlay {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 100;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        transition: transform 0.6s ease-in-out;
+
+        .overlay {
+          position: relative;
+          left: -100%;
+          width: 200%;
+          height: 100%;
+          background-color: #fff;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-position: center;
+          background-size: cover;
+          transition: transform 0.6s ease-in-out;
+          transform: translateX(0);
+
+          .overlay-panel {
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s ease-in-out;
+            transform: translateX(0);
+
+            &.overlay-left {
+              background: url("../images/search.jpeg") no-repeat 50% 50%;
+              background-clip: border-box;
+              transform: translateX(-20%);
+            }
+
+            &.overlay-right {
+              right: 0;
+              transform: translateX(0);
+            }
+
+            .toggle-btn {
+              padding: 0.9rem 4rem;
+              font-size: 0.8rem;
+              font-weight: bold;
+              color: var(--white);
+              text-transform: uppercase;
+              letter-spacing: 0.1rem;
+              cursor: pointer;
+              background-color: var(--blue);
+              background-image: linear-gradient(90deg, var(--blue) 0%, var(--lightblue) 74%);
+              border: 0.2px solid var(--blue-r);
+              border-radius: 20px;
+              transition: transform 80ms ease-in;
+            }
+          }
+        }
+      }
+
+      &.right-panel-active {
+        .container-signup {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+
+        .container-signin {
+          z-index: 8;
+          opacity: 1;
+          transform: translateX(100%);
+          animation: show 0.6s;
+        }
+
+        .container-overlay {
+          transform: translateX(-100%);
+
+          .overlay {
+            transform: translateX(50%);
+
+            .overlay-left {
+              transform: translateX(0);
+            }
+
+            .overlay-right {
+              transform: translateX(20%);
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  @keyframes show {
+    0%,
+    49.99% {
+      z-index: 4;
+      opacity: 0;
+    }
+
+    50%,
+    100% {
+      z-index: 8;
+      opacity: 1;
+    }
+  }
+
+  @keyframes show {
+    0%,
+    49.99% {
+      z-index: 4;
+      opacity: 0;
+    }
+
+    50%,
+    100% {
+      z-index: 8;
+      opacity: 1;
+    }
+  }
+}
+

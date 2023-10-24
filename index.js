@@ -3,6 +3,9 @@ const figlet = require('figlet')
 const chalk = require('chalk')
 const { name, version } = require('./package.json')
 const { createApp } = require('./tasks')
+const { checkNodeSemver } = require('./packages/crw-utils/checkVersion')
+
+checkNodeSemver()
 
 const program = new Command(name)
     .description(`Develop React Website Application by ${name}.`)
