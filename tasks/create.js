@@ -108,7 +108,7 @@ const checkNodeSemver = () => {
     const curNodeVersion = process.versions.node
     const semver = curNodeVersion.split('.')
 
-    if (semver[0] < 18) {
+    if (semver[0] < 14) {
         console.error(`You are running Node ${chalk.red(curNodeVersion)}.\nCreate React Web requires Node 14 or higher.\n${chalk.green('Please update Node version.')}`)
         process.exit(1)
     }
