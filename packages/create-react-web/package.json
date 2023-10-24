@@ -1,0 +1,21 @@
+{
+  "name": "create-react-web",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qq2575896094/crw-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qq2575896094/crw-cli/issues"
+  },
+  "homepage": "https://github.com/qq2575896094/crw-cli#readme"
+}

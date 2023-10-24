@@ -1,11 +1,15 @@
 {
   "name": "crw-cli",
-  "version": "1.0.0",
-  "description": "create react app demo cli",
-  "main": "./src/index.js",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "bin": {
     "crw": "./bin/www"
   },
+  "description": "create react app demo cli",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,17 +31,14 @@
   "devDependencies": {
     "eslint": "^8.41.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5"
+    "eslint-plugin-import": "^2.27.5",
+    "lerna": "^5.1.6"
   },
   "dependencies": {
-    "axios": "^1.4.0",
+    "chalk": "^4.1.2",
     "commander": "^10.0.1",
-    "consolidate": "^1.0.1",
-    "download-git-repo": "^3.0.2",
-    "ejs": "^3.1.9",
+    "figlet": "^1.7.0",
     "inquirer": "^8.2.5",
-    "metalsmith": "^2.6.1",
-    "ncp": "^2.0.0",
     "ora": "^5.4.1"
   }
 }
